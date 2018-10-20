@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "386883528627",
+    "firebase_url": "https://eatanywhere-7cbac.firebaseio.com",
+    "project_id": "eatanywhere-7cbac",
+    "storage_bucket": "eatanywhere-7cbac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386883528627:android:8a11094a9c723a45",
+        "android_client_info": {
+          "package_name": "com.example.utkarshgoel.EatAnywhere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386883528627-je6v40kknn7tf5qvvfe6o868orbk8qq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.utkarshgoel.EatAnywhere",
+            "certificate_hash": "af43f7140f28d267779778fb7d8614772f338caa"
+          }
+        },
+        {
+          "client_id": "386883528627-phkd1ukuptmej8u2p2lie8k3dsn8v1sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd6v4iZP6avGN__tO6qGmDbcgNPZ2K1xo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386883528627-phkd1ukuptmej8u2p2lie8k3dsn8v1sl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
