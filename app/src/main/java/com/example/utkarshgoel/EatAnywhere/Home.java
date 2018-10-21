@@ -1,5 +1,6 @@
 package com.example.utkarshgoel.EatAnywhere;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -96,6 +97,9 @@ public class Home extends AppCompatActivity
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Home.this,FoodList.class);
+                        intent.putExtra("CategoryID",adapter.getRef(position).getKey());
+                        startActivity(intent);
                     }
                 });
             }
