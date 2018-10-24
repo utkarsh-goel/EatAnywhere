@@ -5,11 +5,15 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.utkarshgoel.EatAnywhere.Databases.Database;
 import com.example.utkarshgoel.EatAnywhere.Model.Food;
+import com.example.utkarshgoel.EatAnywhere.Model.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +33,7 @@ public class FoodDetail extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference food;
+    Food currFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,16 @@ public class FoodDetail extends AppCompatActivity {
         food_desc = (TextView)findViewById(R.id.food_desc);
 
         btnCart = (FloatingActionButton)findViewById(R.id.btnCart);
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Database(getBaseContext()).addToCart(new Order(foodID,currFood.getName(),
+                        numberButton.getNumber(),currFood.getPrice(),currFood.getDiscount()));
+                Toast.makeText(FoodDetail.this,"Added to Cart Successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         numberButton = (ElegantNumberButton)findViewById(R.id.btnCount);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing);
@@ -62,12 +77,12 @@ public class FoodDetail extends AppCompatActivity {
         food.child(foodID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Food foodModel = dataSnapshot.getValue(Food.class);
-                Picasso.get().load(foodModel.getImage()).into(food_image);
-                collapsingToolbarLayout.setTitle(foodModel.getName());
-                food_price.setText(foodModel.getPrice());
-                food_name.setText(foodModel.getName());
-                food_desc.setText(foodModel.getDescription());
+                currFood = dataSnapshot.getValue(Food.class);
+                Picasso.get().load(currFood.getImage()).into(food_image);
+                collapsingToolbarLayout.setTitle(currFood.getName());
+                food_price.setText(currFood.getPrice());
+                food_name.setText(currFood.getName());
+                food_desc.setText(currFood.getDescription());
             }
 
             @Override

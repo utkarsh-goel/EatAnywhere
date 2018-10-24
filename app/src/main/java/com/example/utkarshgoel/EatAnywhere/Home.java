@@ -55,7 +55,8 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent cartIntent = new Intent(Home.this,Cart.class);
+                startActivity(cartIntent);
             }
         });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

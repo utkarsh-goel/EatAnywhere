@@ -52,6 +52,7 @@ public class signIn extends AppCompatActivity {
                         progressDialog.dismiss();
                         if (dataSnapshot.child(phone.getText().toString()).exists()) {
                             User user = dataSnapshot.child(phone.getText().toString()).getValue(User.class);
+                            user.setPhone(phone.getText().toString());
                             if (user.getPassword().equals(pswrd.getText().toString()))
                             {
                                 Toast.makeText(signIn.this, "SignIn Successfull", Toast.LENGTH_SHORT).show();
